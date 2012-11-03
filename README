@@ -1,0 +1,7 @@
+utility scripts to scrape websites
+
+SimpleXMLScrape usage:
+
+SimpleXMLScrape http://www.example.com/rss tag
+
+Takes in a RSS url and tag and returns content(s) of the tag

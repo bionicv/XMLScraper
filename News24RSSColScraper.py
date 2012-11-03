@@ -7,19 +7,19 @@ import SimpleXMLScrape as sxml
 import urllib2
 import sys
 from bs4 import BeautifulSoup
-from pytagcloud import create_html_data, make_tags
-from pytagcloud.lang.counter import get_tag_counts
 
 def GetBodyHTML(soup_file):    
     tag = soup_file
     result = soup_file.find_all("p", "clr_left") 
     final_result = " "
-    if len(result) == 1:
-        print "unique solution found! :)"
-        print result[0]
-        final_result = str(result[0])
-    elif len(result) > 1:
-        print "many solutions found! :'("
+
+    if len(result) >= 1:
+        print "many solutions found! :)"
+        for res in result:
+            for single in res.find_all(text=True):
+                final_result += " "
+                print single.encode("iso-8859-15", "ignore")
+                final_result += single.encode("iso-8859-15", "ignore")
     else:
         print "no solutions :("
         
@@ -43,6 +43,9 @@ def GetTextFromWebPages(urls):
 
 def RunDefault():
     url = "http://feeds.news24.com/articles/News24/Columnists/Khaya-Dlanga/rss"
+    RunSpecific(url)
+    
+def RunSpecific(url):
     tag = "link"
     result_urls = sxml.RunWebXMLScrape(url, tag)
     result_text = GetTextFromWebPages(result_urls)
