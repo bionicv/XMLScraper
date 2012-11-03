@@ -42,7 +42,8 @@ def GetTextFromWebPages(urls):
     return text
 
 def RunDefault():
-    url = "http://feeds.news24.com/articles/News24/Columnists/Khaya-Dlanga/rss"
+    url = "http://feeds.news24.com/articles/News24/Columnists/rss"
+    #url = "http://feeds.news24.com/articles/News24/Columnists/Khaya-Dlanga/rss"
     RunSpecific(url)
     
 def RunSpecific(url):
